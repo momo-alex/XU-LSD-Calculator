@@ -22,6 +22,13 @@ struct Calculator {
             return accumulator
         }
     }
+    
+    // Stores the calculation result
+    var secondResult: Double? {
+        get {
+            return secondAccumulator
+        }
+    }
 
     // Stores the first number in the accumulator
     mutating func setAccumulator(_ operand: Double) {
@@ -47,6 +54,11 @@ struct Calculator {
     mutating func clearAccumulator() {
         accumulator = nil
         secondAccumulator = nil
+        thirdAccumulator = nil
+    }
+    
+    mutating func clearThirdAccumulator() {
+        thirdAccumulator = nil
     }
     
     mutating func checkCalculation() -> Bool {
