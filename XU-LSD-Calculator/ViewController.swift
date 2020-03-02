@@ -99,6 +99,9 @@ class ViewController: UIViewController {
                             print("Value is too big.")
                         }
                     }
+                    
+                    isTyping = false
+                    
                 default:
                     return
                 }
