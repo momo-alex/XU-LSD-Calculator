@@ -90,6 +90,8 @@ class ViewController: UIViewController {
             displayLabel.text = ""
             isTyping = false
             
+        case "%": // converts decimal number into percentage
+                   displayLabelValue *= 100
         default:
             return
         }
