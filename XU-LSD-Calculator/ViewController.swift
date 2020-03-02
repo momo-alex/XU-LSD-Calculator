@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     var currentCalculation: Calculator = Calculator()
     var isTyping = false
+    var mathLaw = false
     
     // Represents the value on the calculator display
     var displayLabelValue: Double {
@@ -44,6 +45,24 @@ class ViewController: UIViewController {
                 // if false, then buttonString will be displayed, so the part that was typed in at the beginning
                 isTyping = true
                 displayLabel.text = buttonString
+                
+                if mathLaw {
+                    currentCalculation.setThirdAccumulator(displayLabelValue)
+                    currentCalculation.calculateMultiplicationOrDivision()
+                    currentCalculation.calculateResult()
+                    isTyping = false
+                    if let result = currentCalculation.result {
+                        // number of digits should not exceed 20
+                        if String(result).count < 20 {
+                            displayLabelValue = result
+                        } else {
+                            print("Value is too big.")
+                        }
+                    } // monas part
+                    currentCalculation.clearAccumulator()
+                    
+                    mathLaw = false
+                }
             }
         // Niclas part
         case ".":
@@ -56,22 +75,38 @@ class ViewController: UIViewController {
             currentCalculation.setAccumulator(displayLabelValue)
             if currentCalculation.checkCalculation() {
                 // wenn es bereits eine rechnung gibt, löse diese und speichere das Ergebnis in A1
-                currentCalculation.calculateResult()
-                if let result = currentCalculation.result {
-                    // number of digits should not exceed 20
-                    if String(result).count < 20 {
-                        displayLabelValue = result
-                    } else {
-                        print("Value is too big.")
+                switch buttonString {
+                case "÷", "x":
+                    // waiting for further instructions ...
+                    if let mathmaticalSymbol = sender.currentTitle {
+                        currentCalculation.setSecondCalculationOperator(mathmaticalSymbol)
+                        isTyping = false
                     }
+                    mathLaw = true
+ 
+                case "-", "+":
+                    currentCalculation.calculateResult()
+                    
+                    if let result = currentCalculation.result {
+                        // number of digits should not exceed 20
+                        if String(result).count < 20 {
+                            displayLabelValue = result
+                        } else {
+                            print("Value is too big.")
+                        }
+                    }
+                default:
+                    return
+                }
+            } else {
+                if let mathmaticalSymbol = sender.currentTitle {
+                    currentCalculation.setOperator(mathmaticalSymbol)
+                    isTyping = false
                 }
             }
             
-            if let mathmaticalSymbol = sender.currentTitle {
-                currentCalculation.setOperator(mathmaticalSymbol)
-                isTyping = false
-            }
         case "=":
+            
             currentCalculation.setAccumulator(displayLabelValue)
             currentCalculation.calculateResult()
             isTyping = false
@@ -84,6 +119,7 @@ class ViewController: UIViewController {
                 }
             } // monas part
             currentCalculation.clearAccumulator()
+            
             
         case "Clear":
             currentCalculation.clearAccumulator()
