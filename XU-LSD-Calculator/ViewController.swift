@@ -83,6 +83,8 @@ class ViewController: UIViewController {
                     print("Value is too big.")
                 }
             } // monas part
+            currentCalculation.clearAccumulator()
+            
         case "Clear":
             currentCalculation.clearAccumulator()
             displayLabel.text = ""
