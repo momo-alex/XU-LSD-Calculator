@@ -23,7 +23,7 @@ class ViewController: UIViewController {
             displayLabel.text = String(newValue)
         }
     }
-    // button added with control + hold, Monas part
+    // buttons added with control + hold, Monas part
     
     @IBOutlet weak var displayLabel: UILabel!
     
@@ -36,12 +36,12 @@ class ViewController: UIViewController {
         // number input, monas part
         switch buttonString {
         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-            // if true that user already typed a number
+            // if true that user already typed a number, then the numbers will be displayed
             if isTyping {
                 let currentDisplayText = displayLabel.text!
                 displayLabel.text = currentDisplayText + buttonString
             } else {
-                // if false, dann wird buttonString displayed, also das was am anfang eingebene wurde
+                // if false, then buttonString will be displayed, so the part that was typed in at the beginning
                 isTyping = true
                 displayLabel.text = buttonString
             }
@@ -112,5 +112,6 @@ class ViewController: UIViewController {
 
 // challenges: too big numbers, floating numbers
 
-// kommentieren: warum wir die Dinge so lösen wie wir sie lösen z.B. wozu ist die Funktion, komplexe Funktionen, an if-Abfragen Dinge dran schreiben, was passiert wenn true oder false. Wer was gemacht hat. User interface wird bewertet. Bonus Aufgaben machen!
+// Notizen fürs Team -> kommentieren: warum wir die Dinge so lösen wie wir sie lösen z.B. wozu ist die Funktion, komplexe Funktionen, an if-Abfragen Dinge dran schreiben, was passiert wenn true oder false. Wer was gemacht hat. User interface wird bewertet. Bonus Aufgaben machen!
+// X^y , x^2, ()
 
