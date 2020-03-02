@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             return Double(displayLabel.text!)!
         }
         set {
-            displayLabel.text = String(newValue)
+            displayLabel.text = String(format: "%.2f", newValue)
         }
     }
     // button added with control + hold, Monas part
