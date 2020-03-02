@@ -91,6 +91,11 @@ class ViewController: UIViewController {
                 case "-", "+":
                     currentCalculation.calculateResult()
                     
+                    if let mathmaticalSymbol = sender.currentTitle {
+                        currentCalculation.setOperator(mathmaticalSymbol)
+                        isTyping = false
+                    }
+                    
                     if let result = currentCalculation.result {
                         // number of digits should not exceed 20
                         if String(result).count < 20 {
