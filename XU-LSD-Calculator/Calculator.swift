@@ -24,11 +24,11 @@ struct Calculator {
     // Stores the first number in the accumulator
     mutating func setAccumulator(_ operand: Double) {
         if (accumulator != nil) {
-            // Rechne das Ergebnis der ersten Rechnung aus und speichere es im Akkumulator
-            // wenn es bereits einen Operaten gibt, dann wird der zweite zum secondAccumulator
+            // Calculates the result of the first calculation and stores it in secondAccumulator
+            // if there already is an operation, then the second operand ist the secondAccumulator
             secondAccumulator = operand
         } else {
-            // wenn es noch keinen Operanten gibt, dann ist das erste Eingegebene der erste Akkumulator "accumulator"
+            //  if there is no operand yet, then the first thing typed in is accumulator "accumulator"
             accumulator = operand
         }
     }
@@ -53,7 +53,7 @@ struct Calculator {
         
         print("Perform the calculation: \(accumulator!) \(calculationOperator!) \(secondAccumulator!)")
         
-        // Monas part
+        // Switch-statement for the basic operations, Monas part
         switch calculationOperator {
         case "÷":
             accumulator = accumulator! / secondAccumulator!
