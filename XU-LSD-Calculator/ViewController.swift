@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    // Niclas part --
     var currentCalculation: Calculator = Calculator()
     var isTyping = false
     var mathLaw = false
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             return Double(displayLabel.text!)!
         }
         set {
-            displayLabel.text = String(format: "%.2f", newValue)
+            displayLabel.text = String(format: "%.2f", newValue) // wie es dargestellt wird, wir rechnen mit Doubles raus die ein begrenzte Bitzahl, deshlabt ist 0.3+0.6 = 0.899 , dehalb begrenzen wir die nachkommastellen auf 2, mit float funktioniert es zwar besser aber nicht mit allen zahlen
         }
     }
     // buttons added with control + hold, Monas part
@@ -46,13 +46,13 @@ class ViewController: UIViewController {
                 isTyping = true
                 displayLabel.text = buttonString
             }
-        // Niclas part
         case ".":
             let currentDisplayText = displayLabel.text!
             displayLabel.text = currentDisplayText + buttonString
         case "+/-":
             displayLabelValue *= -1
-        // Nicklas part
+        // --
+        // Nicklas & Monas part --
         case "÷", "x", "-", "+":
             // currentCalculation.setAccumulator(displayLabelValue)
             if !mathLaw {
@@ -116,13 +116,14 @@ class ViewController: UIViewController {
                     isTyping = false
                 }
             }
-            
+        // --
+        // Niclas part --
         case "=":
             if isTyping {
                 
                 if mathLaw {
-                    currentCalculation.setThirdAccumulator(displayLabelValue)
-                    currentCalculation.calculateMultiplicationOrDivision()
+                    currentCalculation.setThirdAccumulator(displayLabelValue) //siehe Methoden (mutating func) in Calulator.swift
+                    currentCalculation.calculateMultiplicationOrDivision() // erst wird die Multiplikation oder Division ausgeführt (deshalb ist es chronologisch so richtig)
                     currentCalculation.calculateResult()
                     isTyping = false
                     if let result = currentCalculation.result {
@@ -163,6 +164,7 @@ class ViewController: UIViewController {
         default:
             return
         }
+        // --
     }
     
     // Is executed when the calculator app starts

@@ -10,11 +10,12 @@ import Foundation
 
 struct Calculator {
 
-    private var accumulator: Double?
+    // Niclas part --
+    private var accumulator: Double? // stores the resiöt in
     private var secondAccumulator: Double?
     private var thirdAccumulator: Double?
-    private var calculationOperator: String?
-    private var secondCalculationOperator: String?
+    private var calculationOperator: String? // stores first Operator
+    private var secondCalculationOperator: String? //stores second Operator
     
     // Stores the calculation result
     var result: Double? {
@@ -29,27 +30,6 @@ struct Calculator {
             return secondAccumulator
         }
     }
-
-    // Stores the first number in the accumulator
-    mutating func setAccumulator(_ operand: Double) {
-        if (accumulator != nil) {
-            // Calculates the result of the first calculation and stores it in secondAccumulator
-            // if there already is an operation, then the second operand ist the secondAccumulator
-            secondAccumulator = operand
-        } else {
-            //  if there is no operand yet, then the first thing typed in is accumulator "accumulator"
-            accumulator = operand
-        }
-    }
-    
-    mutating func setThirdAccumulator(_ operand: Double) {
-        thirdAccumulator = operand
-    }
-    
-    // Stores the calculation operator
-    mutating func setOperator(_ operand: String) { calculationOperator = operand }
-    
-    mutating func setSecondCalculationOperator(_ operand: String) { secondCalculationOperator = operand }
     
     mutating func clearAccumulator() {
         accumulator = nil
@@ -61,6 +41,30 @@ struct Calculator {
         thirdAccumulator = nil
     }
     
+    // --
+    // Niklas --
+    // stores either the first or the second accumulator
+    mutating func setAccumulator(_ operand: Double) {
+        if (accumulator != nil) {
+            // Calculates the result of the first calculation and stores it in secondAccumulator
+            // if there already is an operation, then the second operand ist the secondAccumulator
+            secondAccumulator = operand
+        } else {
+            //  if there is no operand yet, then the first thing typed in is accumulator "accumulator"
+            accumulator = operand
+        }
+    }
+    // thirdAccumulator necassary for dot before dash
+    
+    mutating func setThirdAccumulator(_ operand: Double) {
+        thirdAccumulator = operand
+    }
+    
+    // Stores the calculation operator
+    mutating func setOperator(_ operand: String) { calculationOperator = operand }
+    
+    mutating func setSecondCalculationOperator(_ operand: String) { secondCalculationOperator = operand }
+    
     mutating func checkCalculation() -> Bool {
         if (secondAccumulator != nil) {
             return true
@@ -68,6 +72,8 @@ struct Calculator {
             return false
         }
     }
+    // --
+    // Mona --
     
     mutating func calculateResult() {
         
@@ -90,8 +96,7 @@ struct Calculator {
     
     mutating func calculateMultiplicationOrDivision() {
         print("Perform the calculation: \(secondAccumulator!) \(secondCalculationOperator!) \(thirdAccumulator!)")
-        
-        // Switch-statement for the basic operations, Monas part
+        // Switch-statement for the basic operations, Monas part, Punkt vor Strich
         switch secondCalculationOperator {
         case "÷":
             secondAccumulator = secondAccumulator! / thirdAccumulator!
@@ -101,7 +106,8 @@ struct Calculator {
             return
         }
     }
-
+    
+    // --
 }
 
 
