@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             return Double(displayLabel.text!)!
         }
         set {
-            displayLabel.text = String(format: "%.2f", newValue) // wie es dargestellt wird, wir rechnen mit Doubles raus die ein begrenzte Bitzahl, deshlabt ist 0.3+0.6 = 0.899 , dehalb begrenzen wir die nachkommastellen auf 2, mit float funktioniert es zwar besser aber nicht mit allen zahlen
+            displayLabel.text = String(round(1000*newValue)/1000) // wie es dargestellt wird, wir rechnen mit Doubles raus die ein begrenzte Bitzahl, deshlabt ist 0.3+0.6 = 0.899 , dehalb begrenzen wir die nachkommastellen auf 2, mit float funktioniert es zwar besser aber nicht mit allen zahlen
         }
     }
     // buttons added with control + hold, Monas part
