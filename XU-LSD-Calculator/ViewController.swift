@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     @IBAction func calculatorButtonPressed(_ sender: UIButton) {
         // sender => current button that is clicked, title equals constant
         let buttonString = sender.currentTitle!
-        // number input, monas part
+        // number input, Niclas part
         switch buttonString {
         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
             // if true that user already typed a number, then the numbers will be displayed
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         case "+/-":
             displayLabelValue *= -1
         // --
-        // Niklas & Monas part --
+        // Monas part --
         case "÷", "x", "-", "+":
             // currentCalculation.setAccumulator(displayLabelValue)
             if !mathLaw {
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
                     }
                     
                     mathLaw = true
- 
+ //     //Niklas part
                 case "-", "+":
                     currentCalculation.calculateResult()
                     
@@ -122,8 +122,8 @@ class ViewController: UIViewController {
             if isTyping {
                 
                 if mathLaw {
-                    currentCalculation.setThirdAccumulator(displayLabelValue) //siehe Methoden (mutating func) in Calulator.swift
-                    currentCalculation.calculateMultiplicationOrDivision() // erst wird die Multiplikation oder Division ausgeführt (deshalb ist es chronologisch so richtig)
+                    currentCalculation.setThirdAccumulator(displayLabelValue) //see methods (mutating func) in Calulator.swift
+                    currentCalculation.calculateMultiplicationOrDivision() // first the multiplication or division is executed (therefore it is chronologically correct)
                     currentCalculation.calculateResult()
                     isTyping = false
                     if let result = currentCalculation.result {
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
                         } else {
                             print("Value is too big.")
                         }
-                    } // monas part
+                    } // Monas part
                     currentCalculation.clearAccumulator()
                     
                     mathLaw = false
@@ -148,7 +148,7 @@ class ViewController: UIViewController {
                         } else {
                             print("Value is too big.")
                         }
-                    } // monas part
+                    }
                     currentCalculation.clearAccumulator()
                 }
             }
