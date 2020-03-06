@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             return Double(displayLabel.text!)!
         }
         set {
-            displayLabel.text = String(round(1000*newValue)/1000) // wie es dargestellt wird, wir rechnen mit Doubles raus die ein begrenzte Bitzahl, deshlabt ist 0.3+0.6 = 0.899 , dehalb begrenzen wir die nachkommastellen auf 2, mit float funktioniert es zwar besser aber nicht mit allen zahlen
+            displayLabel.text = String(round(1000*newValue)/1000) // as it is shown, we calculate with doubles that have a limited number of bits, so the number of bits is 0.3+0.6 = 0.899, so we limit the decimal places to 2, with float it works better but not with all numbers
         }
     }
     // buttons added with control + hold, Monas part
@@ -52,14 +52,14 @@ class ViewController: UIViewController {
         case "+/-":
             displayLabelValue *= -1
         // --
-        // Nicklas & Monas part --
+        // Niklas & Monas part --
         case "÷", "x", "-", "+":
             // currentCalculation.setAccumulator(displayLabelValue)
             if !mathLaw {
                 currentCalculation.setAccumulator(displayLabelValue)
             }
             if currentCalculation.checkCalculation() {
-                // wenn es bereits eine rechnung gibt, löse diese und speichere das Ergebnis in A1
+                // if there is already a calculation, solve it and save the result in accumulator
                 switch buttonString {
                 case "÷", "x":
                     // waiting for further instructions ...
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
                             } else {
                                 print("Value is too big.")
                             }
-                        } // monas part
+                        } // Monas part
                         currentCalculation.clearThirdAccumulator()
                         mathLaw = true
                         isTyping = false
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
                 }
             }
             
-            
+        //Niclas part --
         case "Clear":
             currentCalculation.clearAccumulator()
             displayLabel.text = ""
@@ -180,8 +180,4 @@ class ViewController: UIViewController {
 
 }
 
-// challenges: too big numbers, floating numbers
-
-// Notizen fürs Team -> kommentieren: warum wir die Dinge so lösen wie wir sie lösen z.B. wozu ist die Funktion, komplexe Funktionen, an if-Abfragen Dinge dran schreiben, was passiert wenn true oder false. Wer was gemacht hat. User interface wird bewertet. Bonus Aufgaben machen!
-// X^y , x^2, ()
 
