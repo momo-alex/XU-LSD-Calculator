@@ -10,9 +10,12 @@ import Foundation
 
 struct Calculator {
 
-    private var accumulator: Double?
+    // Niclas part --
+    private var accumulator: Double? // stores the resiöt in
     private var secondAccumulator: Double?
-    private var calculationOperator: String?
+    private var thirdAccumulator: Double?
+    private var calculationOperator: String? // stores first Operator
+    private var secondCalculationOperator: String? //stores second Operator
     
     // Stores the calculation result
     var result: Double? {
@@ -20,26 +23,47 @@ struct Calculator {
             return accumulator
         }
     }
-
-    // Stores the first number in the accumulator
+    
+    // Stores the calculation result
+    var secondResult: Double? {
+        get {
+            return secondAccumulator
+        }
+    }
+    
+    mutating func clearAccumulator() {
+        accumulator = nil
+        secondAccumulator = nil
+        thirdAccumulator = nil
+    }
+    
+    mutating func clearThirdAccumulator() {
+        thirdAccumulator = nil
+    }
+    
+    // --
+    // Niklas --
+    // stores either the first or the second accumulator
     mutating func setAccumulator(_ operand: Double) {
         if (accumulator != nil) {
-            // Rechne das Ergebnis der ersten Rechnung aus und speichere es im Akkumulator
-            // wenn es bereits einen Operaten gibt, dann wird der zweite zum secondAccumulator
+            // Calculates the result of the first calculation and stores it in secondAccumulator
+            // if there already is an operation, then the second operand ist the secondAccumulator
             secondAccumulator = operand
         } else {
-            // wenn es noch keinen Operanten gibt, dann ist das erste Eingegebene der erste Akkumulator "accumulator"
+            //  if there is no operand yet, then the first thing typed in is accumulator "accumulator"
             accumulator = operand
         }
+    }
+    // thirdAccumulator necassary for dot before dash
+    
+    mutating func setThirdAccumulator(_ operand: Double) {
+        thirdAccumulator = operand
     }
     
     // Stores the calculation operator
     mutating func setOperator(_ operand: String) { calculationOperator = operand }
     
-    mutating func clearAccumulator() {
-        accumulator = nil
-        secondAccumulator = nil
-    }
+    mutating func setSecondCalculationOperator(_ operand: String) { secondCalculationOperator = operand }
     
     mutating func checkCalculation() -> Bool {
         if (secondAccumulator != nil) {
@@ -48,12 +72,14 @@ struct Calculator {
             return false
         }
     }
+    // --
+    // Mona --
     
     mutating func calculateResult() {
         
         print("Perform the calculation: \(accumulator!) \(calculationOperator!) \(secondAccumulator!)")
         
-        // Monas part
+        // Switch-statement for the basic operations, Monas part
         switch calculationOperator {
         case "÷":
             accumulator = accumulator! / secondAccumulator!
@@ -67,7 +93,21 @@ struct Calculator {
             return
         }
     }
-
+    
+    mutating func calculateMultiplicationOrDivision() {
+        print("Perform the calculation: \(secondAccumulator!) \(secondCalculationOperator!) \(thirdAccumulator!)")
+        // Switch-statement for the basic operations, Monas part, Punkt vor Strich
+        switch secondCalculationOperator {
+        case "÷":
+            secondAccumulator = secondAccumulator! / thirdAccumulator!
+        case "x":
+            secondAccumulator = secondAccumulator! * thirdAccumulator!
+        default:
+            return
+        }
+    }
+    
+    // --
 }
 
 
